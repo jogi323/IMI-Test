@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+body {    
+    background-color: #9d96961c !important;
+    font-family: 'PT Sans', sans-serif;
+}
+.search-bar {
+    border: none;
+    border-radius: 2px;
+    padding: 5px 10px;
+}
+input::placeholder {
+    font-size: 10px;
+}

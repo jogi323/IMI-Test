@@ -1,0 +1,64 @@
+.smart-table {
+    .main-content {
+        table {
+            border: 1px solid #8080803d;
+            // font-family: 'roboto-regular';
+            margin-bottom: 0px !important;
+            thead {
+                tr {
+                    th {
+                        font-weight: normal !important;
+                        .filter-icons {
+                            position: relative;
+                            bottom: 8px;
+                            span {
+                                cursor: pointer;
+                            }
+                            .down-icon {
+                                position: absolute;
+                                top: 60%;
+                                right: 0%;
+                            }
+                        }
+                    }
+                }
+                tr:nth-child(2) {
+                    background-color: #e7edef !important;
+                }
+            }
+            tbody{
+                tr {
+                    td:nth-child(1) {
+                        text-align: center;
+                        .dot {
+                            border-radius: 50%;
+                            height: 35px;
+                            font-weight: bold;
+                            width: 35px;
+                            display: table;
+                            background: #ccc;
+                            p {
+                                vertical-align: middle;
+                                display: table-cell;
+                            }
+                        }
+                    } td {
+                        a {
+                            color: #007bff !important;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+        .view-more {
+            color: #FF0000;
+            cursor: pointer;
+            border: 1px solid #8080803d;
+            p {
+                margin-top: .5em !important;
+                margin-bottom: .5em !important;
+            }
+        }
+    }
+}

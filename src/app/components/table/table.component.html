@@ -1,0 +1,88 @@
+<div class="container-fluid smart-table">
+  <p class="title">Campaign Listing</p>
+  <div class="main-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Showing {{dataSource.length}} of {{originalData.length}}</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th><span><input type="text" name="search" class="search-bar" [(ngModel)]="searchText" placeholder="Search by Campaign Name, Campaign Id"></span></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Name 
+            <span class="filter-icons">
+              <span (click)="sortData('campaignname', 'asc', 'string')"><fa name="angle-up"></fa></span>
+              <span (click)="sortData('campaignname', 'desc', 'string')" class="down-icon"><fa name="angle-down"></fa></span>
+            </span>
+          </th>
+          <th scope="col">Deployments
+            <span class="filter-icons">
+              <span (click)="sortData('deploymentscount', 'asc', 'number')"><fa name="angle-up"></fa></span>
+              <span (click)="sortData('deploymentscount', 'desc', 'number')" class="down-icon"><fa name="angle-down"></fa></span>
+            </span>
+          </th>
+          <th scope="col">Reference ID
+            <span class="filter-icons">
+              <span (click)="sortData('refernceid', 'asc', 'string')"><fa name="angle-up"></fa></span>
+              <span (click)="sortData('refernceid', 'desc', 'string')" class="down-icon"><fa name="angle-down"></fa></span>
+            </span>
+          </th>
+          <th scope="col">Created By
+            <span class="filter-icons">
+              <span (click)="sortData('createdBy', 'asc', 'string')"><fa name="angle-up"></fa></span>
+              <span (click)="sortData('createdBy', 'desc', 'string')" class="down-icon"><fa name="angle-down"></fa></span>
+            </span>
+          </th>
+          <th scope="col">Created Date
+            <span class="filter-icons">
+              <span (click)="sortData('createdon', 'asc', 'string')"><fa name="angle-up"></fa></span>
+              <span (click)="sortData('createdon', 'desc', 'string')" class="down-icon"><fa name="angle-down"></fa></span>
+            </span>
+          </th>
+          <th scope="col">Priority
+            <span class="filter-icons">
+              <span (click)="sortData('priority', 'asc', 'string')"><fa name="angle-up"></fa></span>
+              <span (click)="sortData('priority', 'desc', 'string')" class="down-icon"><fa name="angle-down"></fa></span>
+            </span>
+          </th>
+          <th scope="col">Category
+            <span class="filter-icons">
+              <span (click)="sortData('category', 'asc', 'string')"><fa name="angle-up"></fa></span>
+              <span (click)="sortData('category', 'desc', 'string')" class="down-icon"><fa name="angle-down"></fa></span>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>  
+          <tr *ngFor="let item of dataSource | search: searchText; let i = index">
+            <td><span class="dot"><p>C{{i+1}}</p></span></td>
+            <td><a>{{item.campaignname}}</a><br>
+              <span *ngIf="item.channels && item.channels.length">
+                <span *ngFor="let channel of item.channels; let ind = index">
+                  {{channel}}<span *ngIf="ind >= 0 && ind+1 !== item.channels.length">,</span>
+                </span>
+              </span>
+              <span *ngIf="!item.channels">
+                No Channels
+              </span>
+            </td>
+            <td>{{item.deploymentscount}}</td>
+            <td>{{item.refernceid}}</td>
+            <td>{{item.createdBy.displayName}}</td>
+            <td>{{item.createdon}}</td>
+            <td>{{item.priority}}</td>
+            <td>{{item.category}}</td>
+          </tr>        
+      </tbody>
+      </table>
+      <div class="view-more text-center" *ngIf="dataSource.length">
+        <p (click)="viewMore()">View More</p>
+      </div>
+  </div>
+</div>
